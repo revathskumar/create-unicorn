@@ -1,0 +1,11 @@
+{
+  "name": "create-unicorn",
+  "version": "0.0.0",
+  "description": "npm initializer for npm packages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Revath S Kumar <rsk@revathskumar.com> (http://blog.revathskumar.com/)",
+  "license": "MIT"
+}
