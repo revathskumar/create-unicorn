@@ -7,6 +7,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "npm",
+    "init",
+    "initializer",
+    "create-package"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/revathskumar/create-unicorn"
+  },
+  "bugs": {
+    "url": "https://github.com/revathskumar/create-unicorn/issues"
+  },
+  "homepage": "https://github.com/revathskumar/create-unicorn",
   "author": "Revath S Kumar <rsk@revathskumar.com> (http://blog.revathskumar.com/)",
   "license": "MIT",
   "dependencies": {
