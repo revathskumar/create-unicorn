@@ -13,7 +13,7 @@ module.exports = function() {
   // check folder with name exists
   mkdirp.sync(name);
 
-  console.log("create-unicorn :: ", __dirname, process.cwd());
+  // console.log("create-unicorn :: ", __dirname, process.cwd());
   const templateDir = `${__dirname}/template/`;
   const projectDir = `${process.cwd()}/${name}/`;
 
@@ -24,7 +24,7 @@ module.exports = function() {
     projectDir + "/.vscode/settings.json",
     err => {
       if (err) throw err;
-      console.log("/.vscode/settings.json  was copied");
+      // console.log("/.vscode/settings.json  was copied");
     }
   );
 
@@ -37,7 +37,7 @@ module.exports = function() {
 
       fs.copyFile(templateDir + fileName, projectDir + destFileName, err => {
         if (err) throw err;
-        console.log(fileName + " was copied");
+        // console.log(fileName + " was copied");
       });
     }
   );
