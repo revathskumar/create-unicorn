@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "description": "npm initializer for npm packages",
   "main": "index.js",
+  "bin": "bin/create-unicorn",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Revath S Kumar <rsk@revathskumar.com> (http://blog.revathskumar.com/)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mkdirp": "^1.0.3"
+  }
 }
