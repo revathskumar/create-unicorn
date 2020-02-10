@@ -44,4 +44,5 @@ module.exports = function() {
   process.chdir(projectDir);
   execSync("npm init -y");
   execSync("git init");
+  console.log(`${name} project created`);
 };
