@@ -11,6 +11,31 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const name = args[0];
 
+const updatePackageJSON = (projectDir) => {
+  const packageJSON = JSON.parse(fs.readFileSync(`${projectDir}/package.json`));
+  packageJSON.type = "module";
+  fs.writeFileSync(
+    `${projectDir}/package.json`,
+    JSON.stringify(packageJSON, "", 2)
+  );
+};
+
+const updateNameInReadme = (projectDir, projectName) => {
+  const readme = fs.readFileSync(`${projectDir}/README.md`, "utf-8");
+  const content = readme.replace("<name>", projectName);
+
+  fs.writeFileSync(`${projectDir}/README.md`, content);
+};
+
+const updateLicense = (projectDir) => {
+  const readme = fs.readFileSync(`${projectDir}/LICENSE`, "utf-8");
+  const content = readme
+    .replace("<name>", process.env.USER)
+    .replace("<year>", new Date().getFullYear());
+
+  fs.writeFileSync(`${projectDir}/LICENSE`, content);
+};
+
 export default function () {
   if (!name) {
     throw new Error("Name is required");
@@ -52,6 +77,9 @@ export default function () {
   });
   process.chdir(projectDir);
   execSync("npm init -y");
+  updatePackageJSON(projectDir);
+  updateNameInReadme(projectDir, name);
+  updateLicense(projectDir);
   execSync("git init");
   console.log(`${name} project created`);
 }

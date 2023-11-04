@@ -1,4 +1,4 @@
-## name
+## <name>
 
 ## Setup
 
@@ -10,7 +10,7 @@ npm i
 ## Usage
 
 ```sh
-node --env-file=.env main.js
+node --env-file=.env index.js
 ```
 
 ## License
