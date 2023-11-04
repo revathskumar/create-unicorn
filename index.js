@@ -1,19 +1,23 @@
-const fs = require("fs");
-const process = require("process");
-const mkdirp = require("mkdirp");
-const execSync = require("child_process").execSync;
+import fs from "node:fs";
+import process from "node:process";
+import mkdirp from "mkdirp";
+import { execSync } from "node:child_process";
+
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const args = process.argv.slice(2);
 const name = args[0];
 
-module.exports = function () {
+export default function () {
   if (!name) {
     throw new Error("Name is required");
   }
   // check folder with name exists
   mkdirp.sync(name);
 
-  // console.log("create-unicorn :: ", __dirname, process.cwd());
   const templateDir = `${__dirname}/template/`;
   const projectDir = `${process.cwd()}/${name}/`;
 
@@ -24,7 +28,6 @@ module.exports = function () {
     projectDir + "/.vscode/settings.json",
     (err) => {
       if (err) throw err;
-      // console.log("/.vscode/settings.json  was copied");
     }
   );
 
@@ -41,15 +44,14 @@ module.exports = function () {
     ".nvmrc",
     ".env.example",
   ].forEach((fileName) => {
-    destFileName = altNames[fileName] || fileName;
+    const destFileName = altNames[fileName] || fileName;
 
     fs.copyFile(templateDir + fileName, projectDir + destFileName, (err) => {
       if (err) throw err;
-      // console.log(fileName + " was copied");
     });
   });
   process.chdir(projectDir);
   execSync("npm init -y");
   execSync("git init");
   console.log(`${name} project created`);
-};
+}
