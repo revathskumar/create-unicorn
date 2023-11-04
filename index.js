@@ -6,7 +6,7 @@ const execSync = require("child_process").execSync;
 const args = process.argv.slice(2);
 const name = args[0];
 
-module.exports = function() {
+module.exports = function () {
   if (!name) {
     throw new Error("Name is required");
   }
@@ -22,25 +22,32 @@ module.exports = function() {
   fs.copyFile(
     templateDir + "/.vscode/settings.json",
     projectDir + "/.vscode/settings.json",
-    err => {
+    (err) => {
       if (err) throw err;
       // console.log("/.vscode/settings.json  was copied");
     }
   );
 
   const altNames = {
-    gitignore: ".gitignore"
+    gitignore: ".gitignore",
   };
-  ["README.md", "LICENSE", "index.js", ".editorconfig", "gitignore"].forEach(
-    fileName => {
-      destFileName = altNames[fileName] || fileName;
+  [
+    "README.md",
+    "LICENSE",
+    "index.js",
+    ".editorconfig",
+    "gitignore",
+    ".npmrc",
+    ".nvmrc",
+    ".env.example",
+  ].forEach((fileName) => {
+    destFileName = altNames[fileName] || fileName;
 
-      fs.copyFile(templateDir + fileName, projectDir + destFileName, err => {
-        if (err) throw err;
-        // console.log(fileName + " was copied");
-      });
-    }
-  );
+    fs.copyFile(templateDir + fileName, projectDir + destFileName, (err) => {
+      if (err) throw err;
+      // console.log(fileName + " was copied");
+    });
+  });
   process.chdir(projectDir);
   execSync("npm init -y");
   execSync("git init");
