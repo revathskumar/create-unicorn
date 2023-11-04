@@ -1,6 +1,6 @@
 {
   "name": "create-unicorn",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "npm initializer for npm packages",
   "main": "index.js",
   "type": "module",
