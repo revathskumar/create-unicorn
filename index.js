@@ -14,6 +14,16 @@ const name = args[0];
 const updatePackageJSON = (projectDir) => {
   const packageJSON = JSON.parse(fs.readFileSync(`${projectDir}/package.json`));
   packageJSON.type = "module";
+
+  packageJSON.scripts = {
+    start: "node index.js",
+    dev: "nodemon --env-file=.env index.js",
+  };
+
+  packageJSON.devDependencies = {
+    nodemon: "^3.1.7",
+  };
+
   fs.writeFileSync(
     `${projectDir}/package.json`,
     JSON.stringify(packageJSON, "", 2)
