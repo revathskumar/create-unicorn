@@ -68,6 +68,7 @@ export default function () {
 
   const altNames = {
     gitignore: ".gitignore",
+    npmrc: ".npmrc",
   };
   [
     "README.md",
@@ -75,7 +76,7 @@ export default function () {
     "index.js",
     ".editorconfig",
     "gitignore",
-    ".npmrc",
+    "npmrc",
     ".nvmrc",
     ".env.example",
   ].forEach((fileName) => {
